@@ -106,9 +106,9 @@ RUN \
     cp -r nginx-proxy-manager/rootfs/etc/nginx /etc/ && \
     cp -r nginx-proxy-manager/rootfs/var/www /var/ && \
 
-    # Change the management interface port to the unprivileged port 8181.
-    sed-patch 's|81|8181|' /opt/nginx-proxy-manager/src/backend/index.js && \
-    sed-patch 's|81|8181|' /etc/nginx/conf.d/default.conf && \
+    # Change the management interface port to the unprivileged port 7781.
+    sed-patch 's|81|7781|' /opt/nginx-proxy-manager/src/backend/index.js && \
+    sed-patch 's|81|7781|' /etc/nginx/conf.d/default.conf && \
 
     # Change the HTTP port 80 to the unprivileged port 8080.
     sed-patch 's|listen 80;|listen 8080;|' /etc/nginx/conf.d/default.conf && \
@@ -191,8 +191,8 @@ VOLUME ["/config"]
 # Expose ports.
 #   - 8080: HTTP traffic
 #   - 4443: HTTPs traffic
-#   - 8181: Management web interface
-EXPOSE 8080 4443 8181
+#   - 7781: Management web interface
+EXPOSE 8080 4443 7781
 
 # Metadata.
 LABEL \
